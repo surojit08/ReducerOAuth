@@ -17,7 +17,7 @@ const loginByPassword = async (req, res, next) => {
             httpOnly: true,
             sameSite: "none",
             secure: true,
-            domain:"reduceroauth.onrender.com"
+            domain:".onrender.com"
         });
         res
             .status(201).json({

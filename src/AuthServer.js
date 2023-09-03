@@ -8,6 +8,7 @@ import cors from "cors";
 const expressApp = Express();
 expressApp.use(
   cors({
+    origin: "*",
     credentials: true,
     exposedHeaders: ["set-cookie"],
   }),

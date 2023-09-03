@@ -10,7 +10,7 @@ expressApp.use(
   cors({
     origin: ["http://localhost:5173","https://epaperclient.onrender.com"],
     credentials: true,
-    exposedHeaders: ["set-cookie"],
+    exposedHeaders: ["Set-Cookie"],
   }),
 );
 expressApp.use(json());

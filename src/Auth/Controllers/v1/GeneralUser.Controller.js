@@ -17,7 +17,7 @@ const loginByPassword = async (req, res, next) => {
             httpOnly: true,
             sameSite: "none",
             secure: true,
-            domain:".onrender.com",
+            domain:"reducerepaper.onrender.com",
             path:"/"
         });
         res

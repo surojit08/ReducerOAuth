@@ -20,7 +20,6 @@ const loginByPassword = async (req, res, next) => {
             domain:"reduceroauth.onrender.com"
         });
         res
-            .header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Set-Cookie")
             .status(201).json({
             success: true,
             message: "login successful",

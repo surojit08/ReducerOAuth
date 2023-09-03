@@ -10,7 +10,7 @@ expressApp.use(
   cors({
     origin: ["http://localhost:5173"],
     credentials: true,
-    exposedHeaders: ["set-cookie"],
+    exposedHeaders: ["set-cookie","X-Set-Cookie"],
   }),
 );
 expressApp.use(json());

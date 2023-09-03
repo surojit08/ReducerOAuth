@@ -17,10 +17,9 @@ const loginByPassword = async (req, res, next) => {
             httpOnly: true,
             sameSite: "none",
             secure: true,
-            domain:"onrender.com",
         });
         res
-            .header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+            .header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Set-Cookie")
             .status(201).json({
             success: true,
             message: "login successful",

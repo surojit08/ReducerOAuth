@@ -8,9 +8,9 @@ import cors from "cors";
 const expressApp = Express();
 expressApp.use(
   cors({
-    origin: ["http://localhost:5173","https://epaperclient.onrender.com"],
+    origin: true,
     credentials: true,
-    exposedHeaders: ["Set-Cookie"],
+    exposedHeaders: ["set-cookie"],
   }),
 );
 expressApp.use(json());

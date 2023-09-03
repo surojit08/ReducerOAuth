@@ -19,7 +19,11 @@ const loginByPassword = async (req, res, next) => {
     });
     res.status(201).json({
       success: true,
-      message: "login successful",
+      data:{
+        message: "login successful",
+        token: loginResult.token,
+      }
+
     });
   } catch (error) {
     return next(error);

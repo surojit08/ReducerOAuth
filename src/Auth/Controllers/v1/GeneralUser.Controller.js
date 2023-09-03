@@ -17,8 +17,7 @@ const loginByPassword = async (req, res, next) => {
             httpOnly: true,
             sameSite: "none",
             secure: true,
-            domain:"reducerepaper.onrender.com",
-            path:"/"
+            domain:"onrender.com",
         });
         res
             .header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")

@@ -15,7 +15,6 @@ const loginByPassword = async (req, res, next) => {
     const loginResult = await userService.loginWithPassword(password);
     res.cookie("_ePaperCrd", loginResult.token, {
       httpOnly: true,
-      sameSite: "none",
       secure: true,
     });
     res.status(201).json({

@@ -2,12 +2,14 @@
   "name": "reduceroauth",
   "version": "1.0.0",
   "description": "Backend fo ReducerOAuth",
-  "main": "src/app.js",
+  "main": "src/app.ts",
   "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
-    "dev:debug": "nodemon --inspect=5010 src/app.js"
+    "build": "tsc",
+    "start": "node ./dist/app.js",
+    "dev": "nodemon ./src/app.ts",
+    "debug": "nodemon --inspect=5858 -e ts,tsx --exec node -r ts-node/register ./src/app.ts",
+    "test": "jest -i --runInBand --detectOpenHandles"
   },
   "keywords": [
     "OAuth"
@@ -27,7 +29,11 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
-    "prettier": "3.0.2"
+    "prettier": "3.0.2",
+    "ts-node": "^10.9.1",
+    "@types/node": "^20.6.2",
+    "@types/express": "^4.17.17",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=16.0.0"

@@ -1,4 +1,4 @@
-import { TokenIntrospectionService } from "../../Services/index.js";
+import { TokenIntrospectionService } from "../../Services";
 
 const tokenIntrospect = async (req, res, next) => {
   try {

@@ -1,4 +1,4 @@
-import { GeneralUserService } from "../../Services/index.js";
+import { GeneralUserService } from "../../Services/index";
 
 const registerUser = async (req, res) => {
   const body = req.body;

@@ -1,4 +1,4 @@
-import { BcryptHashingStrategy } from "./HashingStrategy.js";
+import { BcryptHashingStrategy } from "./HashingStrategy";
 
 const hashingStrategy = new BcryptHashingStrategy();
 
@@ -17,13 +17,13 @@ class Password {
 }
 
 class HashPassword {
-  #hashedPassword;
+  readonly #hashedPassword:string;
 
-  constructor(hashed_password) {
+  constructor(hashed_password:string) {
     this.#hashedPassword = hashed_password;
   }
 
-  async verifyPassword(plain_password) {
+  async verifyPassword(plain_password:string) {
     return hashingStrategy.verify(plain_password, this.#hashedPassword);
   }
 

@@ -1,9 +1,9 @@
-import { NoImplementationError } from "./SeverErrors/index.js";
+import { NoImplementationError } from "./SeverErrors/index";
 import {
   DataNotFoundError,
   MalformedDataError,
   UserCredentialMismatchError,
-} from "./APIErrors/index.js";
+} from "./APIErrors/index";
 
 const errorHandlerMiddleware = (error, req, res, _next) => {
   let httpErrorCode = 500;

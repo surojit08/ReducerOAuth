@@ -1,17 +1,18 @@
-import { CLIENT_TYPE } from "../Constants/ClientType.js";
-import { NoImplementationError } from "../Errors/SeverErrors/index.js";
-import { UserAuthToken } from "../Utils/UserAuthToken.js";
-import { GeneralUserService } from "./index.js";
+import {CLIENT_TYPE, ClientType} from "../Constants/ClientType";
+import { NoImplementationError } from "../Errors/SeverErrors/index";
+import {TokenDecodedBody, UserAuthToken} from "../Utils/UserAuthToken";
+import { GeneralUserService } from "./index";
 
 class TokenIntrospectionService {
-  #clientType;
-  #decodedToken;
+  readonly #clientType : ClientType;
+  #decodedToken: TokenDecodedBody;
+  private token: UserAuthToken;
 
   /**
    * Start a token introspecting service
    * @param {String} token_string
    */
-  constructor(token_string) {
+  constructor(token_string:string) {
     // here we pass a class of token then we call decoding on that to getById the token
     const token = new UserAuthToken(token_string);
     const decodedToken = token.getNonVerifiedDecodedToken();
@@ -23,9 +24,9 @@ class TokenIntrospectionService {
   // verify the token return status as 'active'
   async introspect() {
     try {
-      let clientDetails;
-      let clientName;
-      let clientEmail;
+      let clientDetails:any;
+      let clientName: string;
+      let clientEmail: string;
       if (this.#clientType === CLIENT_TYPE.USER) {
         this.#userTokenIntrospection();
         clientDetails = await GeneralUserService.findByUserId(
@@ -59,6 +60,7 @@ class TokenIntrospectionService {
 
   // todo: in future we may need to perform db call.
   #userTokenIntrospection() {
+    //@ts-ignore
     this.token.verifyToken();
   }
 

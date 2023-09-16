@@ -1,13 +1,14 @@
 // here I handle business logic
-import sequelize from "../../Config/AuthDataBase.Config.js";
-import { GeneralUserCredentialDao, GeneralUserDao } from "../DAO/index.js";
-import { GeneralUserDTO } from "../DTO/index.js";
-import { HashPassword, Password } from "../Utils/Password.js";
+import sequelize from "../../Config/AuthDataBase.Config";
+import { GeneralUserCredentialDao, GeneralUserDao } from "../DAO/index";
+import { GeneralUserDTO } from "../DTO/index";
+import { HashPassword, Password } from "../Utils/Password";
 import {
   DataNotFoundError,
   UserCredentialMismatchError,
-} from "../Errors/APIErrors/index.js";
-import { UserAuthToken } from "../Utils/UserAuthToken.js";
+} from "../Errors/APIErrors/index";
+import { UserAuthToken } from "../Utils/UserAuthToken";
+
 
 class GeneralUserService {
   #user;
@@ -55,6 +56,7 @@ class GeneralUserService {
     if (user) {
       return user;
     }
+    //@ts-ignore
     throw new DataNotFoundError();
   }
 
@@ -64,6 +66,8 @@ class GeneralUserService {
       this.#user = user;
       return;
     }
+    //@ts-ignore
+
     throw new DataNotFoundError();
   }
 
@@ -71,6 +75,7 @@ class GeneralUserService {
     const userCredential = await GeneralUserCredentialDao.findOne({
       user_id: this.#user.id,
     });
+    //@ts-ignore
     const hashedPassword = new HashPassword(userCredential.password);
     const isMatch = await hashedPassword.verifyPassword(plain_password);
     if (isMatch) {

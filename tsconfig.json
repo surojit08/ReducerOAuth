@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "allowUnreachableCode": false,
+    "strict": false,
+    "allowJs": true,
+    "strictFunctionTypes": false,
+    "strictNullChecks": false,
+    "typeRoots":["./src/types","./node_modules/@types"],
+    "resolveJsonModule" :true,
+    "moduleResolution" :"nodenext",
+    "sourceMap": true,
+    "checkJs": false,
+    "experimentalDecorators": true
+
+  }
+}

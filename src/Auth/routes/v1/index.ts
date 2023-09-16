@@ -1,6 +1,6 @@
 import { Router } from "express";
-import userAccountRouter from "./UserAccount.route.js";
-import tokenRouter from "./Token.route.js";
+import userAccountRouter from "./UserAccount.route";
+import tokenRouter from "./Token.route";
 
 const v1Router = Router();
 v1Router.use("/accounts", userAccountRouter);

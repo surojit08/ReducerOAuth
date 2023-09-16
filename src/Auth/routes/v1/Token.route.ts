@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { tokenIntrospect } from "../../Controllers/v1/Token.Controller.js";
+import { tokenIntrospect } from "../../Controllers/v1/Token.Controller";
 
 const tokenRouter = Router();
 

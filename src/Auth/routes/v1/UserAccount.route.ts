@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   loginByPassword,
   registerUser,
-} from "../../Controllers/v1/GeneralUser.Controller.js";
+} from "../../Controllers/v1/GeneralUser.Controller";
 
 const userAccountRouter = Router();
 

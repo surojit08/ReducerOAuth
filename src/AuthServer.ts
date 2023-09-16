@@ -1,8 +1,8 @@
 // here I export an express server
 import Express, { json } from "express";
 import cookieParser from "cookie-parser";
-import v1Router from "./Auth/routes/v1/index.js";
-import { errorHandlerMiddleware } from "./Auth/Errors/errorHandlerMiddleware.js";
+import v1Router from "./Auth/routes/v1/index";
+import { errorHandlerMiddleware } from "./Auth/Errors/errorHandlerMiddleware";
 import cors from "cors";
 
 const expressApp = Express();

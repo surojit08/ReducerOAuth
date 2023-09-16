@@ -1,5 +1,5 @@
 import { Sequelize } from "@sequelize/core";
-import chalk from "chalk";
+import {GeneralUser, GeneralUserCredential} from "../Auth/Models";
 
 const dbName = process.env[`AUTH_DB_NAME`];
 const userName = process.env[`AUTH_DB_USER`];
@@ -13,7 +13,14 @@ const sequelize = new Sequelize(dbName, userName, userPassword, {
   dialectOptions: {
     ssl,
   },
-  logging: (message) => console.log(chalk.cyan(message, "\n\n")),
+  logging: (message) => console.log(message, "\n\n"),
+  models:[
+    GeneralUser,
+    GeneralUserCredential
+  ]
 });
 
+sequelize.sync({
+  alter:true
+})
 export default sequelize;

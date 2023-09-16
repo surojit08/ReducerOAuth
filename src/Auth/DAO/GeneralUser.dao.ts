@@ -1,6 +1,6 @@
 // I want to access the database from here in unit call
 
-import { GeneralUser } from "../Models/index.js";
+import { GeneralUser } from "../Models";
 
 class GeneralUserDao {
   async create({ user }, { transaction }) {

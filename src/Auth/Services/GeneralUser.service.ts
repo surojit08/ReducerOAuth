@@ -8,11 +8,12 @@ import {
   UserCredentialMismatchError,
 } from "../Errors/APIErrors/index";
 import { UserAuthToken } from "../Utils/UserAuthToken";
+import {GeneralUser} from "../Models";
 
 
 class GeneralUserService {
-  #user;
-  #email;
+  #user: GeneralUser;
+  #email:string;
 
   static async registerUser({ user_details }) {
     const new_user = GeneralUserDTO.toUserCreate(user_details);
@@ -44,19 +45,18 @@ class GeneralUserService {
     }
   }
 
-  static async init(email) {
+  static async init(email:string) {
     const generalUserService = new GeneralUserService();
     generalUserService.#email = email;
     await generalUserService.#findByEmail();
     return generalUserService;
   }
 
-  static async findByUserId(user_id) {
+  static async findByUserId(user_id:number) {
     const user = await GeneralUserDao.findUserById({ user_id });
     if (user) {
       return user;
     }
-    //@ts-ignore
     throw new DataNotFoundError();
   }
 
@@ -71,7 +71,7 @@ class GeneralUserService {
     throw new DataNotFoundError();
   }
 
-  async loginWithPassword(plain_password) {
+  async loginWithPassword(plain_password:string) {
     const userCredential = await GeneralUserCredentialDao.findOne({
       user_id: this.#user.id,
     });

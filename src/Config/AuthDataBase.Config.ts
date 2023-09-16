@@ -1,6 +1,6 @@
 import { Sequelize } from "@sequelize/core";
 import {GeneralUser, GeneralUserCredential} from "../Auth/Models";
-
+import * as process from "process";
 const dbName = process.env[`AUTH_DB_NAME`];
 const userName = process.env[`AUTH_DB_USER`];
 const userPassword = process.env[`AUTH_DB_USER_PASSWORD`];
@@ -22,5 +22,7 @@ const sequelize = new Sequelize(dbName, userName, userPassword, {
 
 sequelize.sync({
   alter:true
+}).catch((error)=>{
+  console.log("error :", error)
 })
 export default sequelize;

@@ -3,9 +3,9 @@ import { BcryptHashingStrategy } from "./HashingStrategy";
 const hashingStrategy = new BcryptHashingStrategy();
 
 class Password {
-  plainPassword;
+  plainPassword : string;
 
-  constructor(plain_password) {
+  constructor(plain_password:string) {
     this.plainPassword = plain_password;
   }
 

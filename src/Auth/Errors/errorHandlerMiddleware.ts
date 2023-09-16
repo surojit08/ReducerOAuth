@@ -4,8 +4,9 @@ import {
   MalformedDataError,
   UserCredentialMismatchError,
 } from "./APIErrors/index";
+import {ErrorRequestHandler} from "express";
 
-const errorHandlerMiddleware = (error, req, res, _next) => {
+const errorHandlerMiddleware: ErrorRequestHandler = (error, _req, res, _next) => {
   let httpErrorCode = 500;
   let httpErrorMessage = "something went wrong";
   if (error instanceof NoImplementationError) {

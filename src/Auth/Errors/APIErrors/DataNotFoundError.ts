@@ -1,5 +1,5 @@
 class DataNotFoundError extends Error {
-  constructor(message) {
+  constructor(message?:string) {
     super(message ?? "No data found");
   }
 }

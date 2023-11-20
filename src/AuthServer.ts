@@ -15,6 +15,9 @@ expressApp.use(
 );
 expressApp.use(json());
 expressApp.use(cookieParser());
+expressApp.get("/", (req,res)=>{
+    res.status(200).send("Auth server is running");
+});
 expressApp.use("/v1", v1Router);
 expressApp.use(errorHandlerMiddleware);
 

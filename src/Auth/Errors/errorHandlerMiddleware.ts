@@ -7,6 +7,7 @@ import {
 import {ErrorRequestHandler} from "express";
 
 const errorHandlerMiddleware: ErrorRequestHandler = (error, _req, res, _next) => {
+
   let httpErrorCode = 500;
   let httpErrorMessage = "something went wrong";
   if (error instanceof NoImplementationError) {
@@ -25,6 +26,7 @@ const errorHandlerMiddleware: ErrorRequestHandler = (error, _req, res, _next) =>
   res.status(httpErrorCode).json({
     success: false,
     message: httpErrorMessage,
+    raw_error: error.message,
     type: error.constructor.name,
   });
 };

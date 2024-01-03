@@ -3,6 +3,7 @@ import {
   DataNotFoundError,
   MalformedDataError,
   UserCredentialMismatchError,
+  AlreadyRegisterError,
 } from "./APIErrors/index";
 import {ErrorRequestHandler} from "express";
 
@@ -20,6 +21,9 @@ const errorHandlerMiddleware: ErrorRequestHandler = (error, _req, res, _next) =>
     httpErrorCode = 403;
     httpErrorMessage = error.message;
   } else if (error instanceof MalformedDataError) {
+    httpErrorCode = 400;
+    httpErrorMessage = error.message;
+  }else if (error instanceof AlreadyRegisterError) {
     httpErrorCode = 400;
     httpErrorMessage = error.message;
   }

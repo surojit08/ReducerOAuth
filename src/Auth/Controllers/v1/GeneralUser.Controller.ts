@@ -1,12 +1,17 @@
 import { GeneralUserService } from "../../Services/index";
 import {Response, Request, NextFunction} from "express";
 
-const registerUser = async (req:Request, res:Response) => {
-  const body = req.body;
-  const created_user = await GeneralUserService.registerUser({
-    user_details: body,
-  });
-  res.status(201).json({ user: created_user });
+const registerUser = async (req:Request, res:Response,next:NextFunction) => {
+  try{
+    const body = req.body;
+    const created_user = await GeneralUserService.registerUser({
+      user_details: body,
+    });
+    res.status(201).json({ user: created_user });
+  }
+  catch(error){
+    next(error)
+  }
 };
 const loginByPassword = async (req:Request, res:Response, next:NextFunction) => {
   try {

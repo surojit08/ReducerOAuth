@@ -9,6 +9,7 @@ import {
 } from "../Errors/APIErrors/index";
 import { UserAuthToken } from "../Utils/UserAuthToken";
 import {GeneralUser} from "../Models";
+import {AlreadyRegisterError} from "../Errors/APIErrors";
 
 
 class GeneralUserService {
@@ -19,6 +20,13 @@ class GeneralUserService {
     const new_user = GeneralUserDTO.toUserCreate(user_details);
     try {
       const createdUser = await sequelize.transaction(async (t1) => {
+
+        // check if user already exists
+        const user = await GeneralUserDao.findByEmail({ email: new_user.email });
+        if (user) {
+          throw new AlreadyRegisterError();
+        }
+
         // save a new user to db
         const userBasics = await GeneralUserDao.create(
           { user: new_user },
